@@ -1640,6 +1640,8 @@ class Video:
         api = API["operate"]["submit_subtitle"]
 
         # lan check，应该是这里面的语言代码
+        from .utils.path_helper import get_data_file_path
+        abs_path = get_data_file_path("subtitle_lan.json")
         with open(
             os.path.join(os.path.dirname(__file__), "data/subtitle_lan.json"),
             encoding="utf-8",

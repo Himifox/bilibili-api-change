@@ -1,14 +1,17 @@
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
+# 移除setuptools-scm（暂时不用版本自动管理，避免报错）
+requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "bilibili-api-python"
+name = "bilibili-api-pathchange"
 authors = [{ name = "Nemo2011", email = "yimoxia@outlook.com" }]
 maintainers = [{ name = "MoyuScript" }, { name = "Nemo2011" }]
-dynamic = ["version", "readme"] # 移除了 "dependencies"
+# 完全移除dynamic，手动指定版本和readme（彻底避免动态读取报错）
+version = "0.1.0"
+readme = { file = "README.md", content-type = "text/markdown" }
 license = { text = "GPL-3.0-or-later" }
-description = "The fork of module bilibili-api. 哔哩哔哩的各种 API 调用便捷整合（视频、动态、直播等），另外附加一些常用的功能。"
+description = "修改bilibili-api路径的bilibili-api-python库"
 requires-python = ">=3.9"
 keywords = ["bilibili", "api", "spider"]
 classifiers = [
@@ -19,21 +22,22 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
 ]
 scripts = { "ivitools" = "bilibili_api.tools.ivitools.__main__:main" }
 dependencies = [
-    "beautifulsoup4",
-    "colorama",
-    "lxml",
-    "pyyaml",
-    "brotli",
-    "qrcode",
-    "APScheduler",
-    "pillow",
-    "yarl",
-    "pycryptodomex",
-    "qrcode_terminal",
-    "PyJWT",
+    "beautifulsoup4>=4.12.0",
+    "colorama>=0.4.6",
+    "lxml>=4.9.0",
+    "pyyaml>=6.0",
+    "brotli>=1.0.9",
+    "qrcode>=7.4.2",
+    "APScheduler>=3.10.1",
+    "pillow>=10.0.0",
+    "yarl>=1.9.0",
+    "pycryptodomex>=3.19.0",
+    "qrcode_terminal>=0.4.0",
+    "PyJWT>=2.8.0",
 ]
 
 [project.urls]
@@ -41,10 +45,6 @@ Homepage = "https://github.com/Nemo2011/bilibili-api"
 Repository = "https://github.com/Nemo2011/bilibili-api"
 Documentation = "https://nemo2011.github.io/bilibili-api"
 "Bug Report" = "https://github.com/Nemo2011/bilibili-api/issues"
-
-[tool.setuptools.dynamic]
-version = { attr = "bilibili_api.BILIBILI_API_VERSION" }
-readme = { file = ["README.md"], content-type = "text/markdown" }
 
 [tool.setuptools]
 packages = [
@@ -59,7 +59,7 @@ packages = [
 ]
 
 [tool.setuptools.package-data]
-"*" = ["data/*.*", "data/**/*.*", "py.typed", "requirements.txt"]
+bilibili_api = ["data/*.*", "data/**/*.*", "py.typed", "requirements.txt"]
 
 [project.entry-points.pyinstaller40]
 "hook-dirs" = "bilibili_api._pyinstaller.entry_points:get_hook_dirs"

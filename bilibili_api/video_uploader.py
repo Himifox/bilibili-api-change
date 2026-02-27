@@ -66,6 +66,8 @@ class Lines(Enum):
     BLDSA = "bldsa"
 
 
+from .utils.path_helper import get_data_file_path
+abs_path = get_data_file_path("video_uploader_lines.json")
 with open(
     os.path.join(os.path.dirname(__file__), "data/video_uploader_lines.json"),
     encoding="utf8",
@@ -583,6 +585,8 @@ class VideoMeta:
         """
         检查 tid 是否合法
         """
+        from .utils.path_helper import get_data_file_path
+        abs_path = get_data_file_path("video_uploader_meta_pre.json")
         with open(
             os.path.join(
                 os.path.dirname(__file__), "data/video_uploader_meta_pre.json"

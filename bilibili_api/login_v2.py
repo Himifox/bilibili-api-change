@@ -110,6 +110,8 @@ def get_countries_list() -> List[Dict]:
     Returns:
         List[dict]: 地区列表
     """
+    from .utils.path_helper import get_data_file_path
+    abs_path = get_data_file_path("countries_codes.json")
     with open(
         os.path.join(os.path.dirname(__file__), "data/countries_codes.json"),
         encoding="utf8",

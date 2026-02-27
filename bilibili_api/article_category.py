@@ -44,6 +44,8 @@ def get_category_info_by_id(id: int) -> Tuple[Optional[dict], Optional[dict]]:
     Returns:
         Tuple[dict | None, dict | None]: 第一个是主分区，第二个是字分区。没有找到则为 (None, None)
     """
+    from .utils.path_helper import get_data_file_path
+    abs_path = get_data_file_path("article_category.json")
     with open(
         os.path.join(os.path.dirname(__file__), "data/article_category.json"),
         encoding="utf-8",
@@ -70,6 +72,8 @@ def get_category_info_by_name(name: str) -> Tuple[Optional[dict], Optional[dict]
     Returns:
         Tuple[dict | None, dict | None]: 第一个是主分区，第二个是字分区。没有找到则为 (None, None)
     """
+    from .utils.path_helper import get_data_file_path
+    abs_path = get_data_file_path("article_category.json")
     with open(
         os.path.join(os.path.dirname(__file__), "data/article_category.json"),
         encoding="utf-8",
@@ -93,6 +97,8 @@ def get_categories_list() -> List[dict]:
     Returns:
         List[dict]: 所有分区的数据
     """
+    from .utils.path_helper import get_data_file_path
+    abs_path = get_data_file_path("article_category.json")
     with open(
         os.path.join(os.path.dirname(__file__), "data/article_category.json"),
         encoding="utf-8",
@@ -119,6 +125,8 @@ def get_categories_list_sub() -> dict:
     Returns:
         dict: 所有分区的数据
     """
+    from .utils.path_helper import get_data_file_path
+    abs_path = get_data_file_path("article_category.json")
     with open(
         os.path.join(os.path.dirname(__file__), "data/article_category.json"),
         encoding="utf-8",

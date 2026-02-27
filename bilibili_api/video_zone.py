@@ -27,6 +27,8 @@ def get_zone_info_by_tid(tid: int) -> Tuple[Union[dict, None], Union[dict, None]
     Returns:
         Tuple[dict | None, dict | None]: 第一个是主分区，第二个是子分区，没有时返回 None。
     """
+    from .utils.path_helper import get_data_file_path
+    abs_path = get_data_file_path("video_zone.json")
     with open(
         os.path.join(os.path.dirname(__file__), "data/video_zone.json"), encoding="utf8"
     ) as f:
@@ -59,6 +61,8 @@ def get_zone_info_by_name(name: str) -> Tuple[Union[dict, None], Union[dict, Non
     Returns:
         Tuple[dict | None, dict | None]: 第一个是主分区，第二个是子分区，没有时返回 None。
     """
+    from .utils.path_helper import get_data_file_path
+    abs_path = get_data_file_path("video_zone.json")
     with open(
         os.path.join(os.path.dirname(__file__), "data/video_zone.json"), encoding="utf8"
     ) as f:
@@ -108,6 +112,8 @@ def get_zone_list() -> List[Dict]:
     Returns:
         List[dict]: 所有分区的数据
     """
+    from .utils.path_helper import get_data_file_path
+    abs_path = get_data_file_path("video_zone.json")
     with open(
         os.path.join(os.path.dirname(__file__), "data/video_zone.json"), encoding="utf8"
     ) as f:
@@ -133,6 +139,8 @@ def get_zone_list_sub() -> dict:
     Returns:
         dict: 所有分区的数据
     """
+    from .utils.path_helper import get_data_file_path
+    abs_path = get_data_file_path("video_zone.json")
     with open(
         os.path.join(os.path.dirname(__file__), "data/video_zone.json"), encoding="utf8"
     ) as f:

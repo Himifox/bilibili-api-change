@@ -23,11 +23,8 @@ def get_api(field: str, *args) -> dict:
     Returns:
         dict, 该 API 的内容。
     """
-    path = os.path.abspath(
-        os.path.join(
-            os.path.dirname(__file__), "..", "data", "api", f"{field.lower()}.json"
-        )
-    )
+    from .path_helper import get_api_file_path
+    path = get_api_file_path(field)
     if os.path.exists(path):
         with open(path, encoding="utf8") as f:
             data = json.load(f)
